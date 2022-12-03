@@ -317,16 +317,19 @@ class Report:
         ax[1, 1].axis('scaled')
         ax[1, 1].set_title(title)
 
+def main():
+    user_input = UserInput()
+    vacancies_array = DataSet.csv_reader(user_input.file_name)
 
-user_input = UserInput()
-vacancies_array = DataSet.csv_reader(user_input.file_name)
+    if len(vacancies_array) == 0:
+        do_exit("Ничего не найдено")
 
-if len(vacancies_array) == 0:
-    do_exit("Ничего не найдено")
+    data = DataDictionary()
+    data.update_data(vacancies_array, user_input.profession)
+    data.print()
 
-data = DataDictionary()
-data.update_data(vacancies_array, user_input.profession)
-data.print()
+    report = Report(data)
+    report.generate_image()
 
-report = Report(data)
-report.generate_image()
+if __name__ == "__main__":
+    main()
