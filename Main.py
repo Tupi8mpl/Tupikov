@@ -3,7 +3,7 @@ import sorting_table
 
 if __name__ == "__main__":
     is_input = False
-    print("Hello, world")
+    print("Hello, World!")
     while not is_input:
         input = input('Для таблиц введите "Вакансии" без кавычек.\n'
                            'Для графика введите "Статистика" без кавычек.\n')
